@@ -437,3 +437,51 @@ void SD_addRecord()
 	}
 	f1.close();
 }
+//display function for normal student
+void SD_viewAll()
+{
+	fstream f1;
+	f1.open("student.dat",ios::in|ios::binary);
+	if(!f1)
+	{
+		console("ERROR");
+		getch();
+		return;
+	}
+	while(!f1.eof())
+	{
+		f1.read((char*)&s,sizeof(s));
+		if(f1.eof())
+			break;
+		s.displayData();
+		getch();
+	}
+	f1.close();
+}
+
+//deleting data for normal student by admission number
+void SD_deleteRecord()
+{
+	fstream f1,f2;
+	int flag=0;
+	long admn;
+	f1.open("student.dat",ios::in|ios::binary);
+	f2.open("temp.dat",ios::out|ios::binary);
+	if(!f1)
+	{
+		console("ERROR");
+		getch();
+		return;
+	}
+	clear();
+	admn = getNum(8,8,"Admno -> ");
+	while(!f1.eof())
+	{
+		f1.read((char*)&s,sizeof(s));
+		if(f1.eof())
+			break;
+		if(s.getAdmno()==admn)
+		{
+			flag=1;
+			continue;
+		}
