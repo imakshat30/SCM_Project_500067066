@@ -745,4 +745,93 @@ void MC_searchRecord(long admn)
 	f2.close();
 }
 
-			
+void MC_viewAll()
+{
+	fstream f1;
+	f1.open("checkup.dat",ios::in|ios::binary);
+	if(!f1)
+	{
+		console("ERROR");
+		getch();
+		return;
+	}
+	while(!f1.eof())
+	{
+		f1.read((char*)&c,sizeof(c));
+		if(f1.eof())
+			break;
+		c.displayData();
+		getch();
+		init();
+	}
+	f1.close();
+
+}
+
+//////////////////////////////////////////////
+//////////VISITOR ENTRY AND REPORT////////////
+//////////////////////////////////////////////
+
+void Report()
+{
+	int cr,tX,tY,flag=0;
+	int choice,ch2,smonth,sdate,syear,emonth,edate,eyear;
+	long admn;
+	char ch,option[4][50] = {"Add New Visitor Entry","Get Visit Record","Get visitor reports","Go Back"};
+	do
+	{
+		if(flag==0)
+		{
+			init();
+			console("");
+			cr=0;
+			tX=6;
+			tY=7;
+			plus("VISITOR ENTRY");
+			clear();
+			for(int i=0;i<4;i++)
+				setText(tX,tY+i,option[cr+i]);
+			cursor(tX,tY,option[cr]);
+			flag=1;
+		}
+		ch=getch();
+		switch(ch)
+		{
+			case 80:setText(tX,tY,option[cr]); //down key
+				if(cr==3)
+				{
+					cr=0;
+					tY-=3;
+				}
+				else
+				{
+					cr++;
+					tY++;
+				}
+				cursor(tX,tY,option[cr]);
+				break;
+			case 72:setText(tX,tY,option[cr]);  //up key
+				if(cr==0)
+				{
+					cr=3;
+					tY+=3;
+				}
+				else
+				{
+					cr--;
+					tY--;
+				}
+				cursor(tX,tY,option[cr]);
+				break;
+			case 13:switch(cr+1)
+				{
+					case 1: init();
+						R_addRecord();
+						flag=0;
+						break;
+					case 2: init();
+						setText(5,5,"Enter Admno. to search -> ",WHITE);
+						admn = getNum(5,6,"",WHITE);
+						R_searchRecord(admn);
+						flag=0;
+						break;			
