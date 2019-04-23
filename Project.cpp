@@ -660,5 +660,48 @@ void checkUp:: displayData()
 		setText(tX,tY+i,str);
 	}
 }
+void checkUp:: inputData()
+{
+	init();
+	int tX=6, tY=6;
+	char list[7][50] = {"4.Sight:","5.Ears:","6.Teeth:","7.Throat:","8.Tonsils:","9.Nails:","10.Hygiene:"};
+	char str[50];
+	admNo = getNum(tX,tY++,"1.Admno: ",WHITE);
+	height = getNum(tX,tY++,"2.Height: ",WHITE);
+	weight = getNum(tX,tY++,"3.Weight: ",WHITE);
+	for(int i=0;i<7;i++)
+	{
+		getText(tX,tY+i,list[i],str,WHITE);
+		strcpy(data[i],str);
+	}
+	curDate(date,month,year);
+	init();
+}
+
+void MC_addRecord()
+{
+	fstream f1;
+	char ch;
+	f1.open("checkup.dat",ios::app|ios::binary);
+	if(!f1)
+	{
+		console("ERROR");
+		getch();
+		return;
+	}
+	while(1)
+	{
+		c.inputData();
+		f1.write((char*)&c,sizeof(c));
+		init();
+		setText(5,5,"Press N to stop entering data and ",WHITE);
+		setText(5,6,"any other key to continue entering data",WHITE);
+		window(5,7,10,7);
+		cin>>ch;
+		if(ch=='n'|| ch=='N')
+			break;
+	}
+		f1.close();
+}
 
 			
