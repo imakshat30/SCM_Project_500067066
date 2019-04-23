@@ -641,5 +641,24 @@ void MedicalCheckup()
 		}
 	} while(ch!=27);
 }
+void checkUp:: displayData()
+{
+	int tX=6, tY=6;
+	//displaying the medical report
+	char list[7][50] = {"4.Sight:","5.Ears:","6.Teeth:","7.Throat:","8.Tonsils:","9.Nails:","10.Hygiene:"};
+	char *str;
+	gotoxy(tX+3,3);
+	cout<<"Date of exa\mination "<<date<<"-"<<month<<"-"<<year<<"\n";
+	box(5,5,31,16);
+	setNum(tX,tY++,"1.Admno: ",admNo);
+	setNum(tX,tY++,"2.Height: ",height);
+	setNum(tX,tY++,"3.Weight: ",weight);
+	for(int i=0;i<7;i++)
+	{
+		str = list[i];
+		strcat(str,data[i]);
+		setText(tX,tY+i,str);
+	}
+}
 
 			
