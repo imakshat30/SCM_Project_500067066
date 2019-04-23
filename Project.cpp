@@ -1051,4 +1051,16 @@ void view_month(int mon)//mon: number of months of record required from current 
 		}
 	}
 }
-			
+void init()
+{
+	window(1,1,80,25);
+	textbackground(BLACK);
+	clrscr();
+	window(1,1,80,24);
+	textcolor(BLACK);
+	textbackground(WHITE);
+	clrscr();
+	box(1,1,80,24);
+	gotoxy(27,1);
+	cout<<"AAROGYA :: MEDICAL EXPERT";
+}			
