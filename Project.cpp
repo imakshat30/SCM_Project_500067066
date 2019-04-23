@@ -337,3 +337,53 @@ void studentDB()
 			cursor(tX,tY,option[cr]);
 			flag=1;
 		}
+			ch=getch();
+		switch(ch)
+		{
+			case 80:setText(tX,tY,option[cr]); //down key
+				if(cr==5)
+				{
+					cr=0;
+					tY-=5;
+				}
+				else
+				{
+					cr++;
+					tY++;
+				}
+				cursor(tX,tY,option[cr]);
+				break;
+			case 72:setText(tX,tY,option[cr]);  //up key
+				if(cr==0)
+				{
+					cr=5;
+					tY+=5;
+				}
+				else
+				{
+					cr--;
+					tY--;
+				}
+				cursor(tX,tY,option[cr]);
+				break;
+			case 13:switch(cr+1)
+				{
+					case 1: clear();
+						SD_addRecord();
+						flag=0;
+						break;
+					case 2: SD_deleteRecord();
+						flag=0;
+						break;
+					case 3: SD_viewAll();
+						flag=0;
+						break;
+					case 4: SD_searchRecord();
+						flag=0;
+						break;
+					case 5: SD_modifyRecord();
+						flag=0;
+						break;
+					case 6: ch=27;
+				 }
+		}
