@@ -91,3 +91,42 @@ char* getText(int,int,char*,COLORS,int);
 long getNum(int,int,char*,COLORS);
 void plus(char* s);
 void clear();
+
+void main()
+{
+	clrscr();
+	window(1,1,80,25);
+	textbackground(BLACK);
+	textcolor(BLACK);
+	clrscr();
+	window(2,2,79,24);
+	textbackground(WHITE);
+	clrscr();
+	window(15,10,70,15);
+	textbackground(RED);
+	clrscr();
+	window(38,5,48,20);
+	textbackground(RED);
+	clrscr();
+	window(20,10,45,10);
+	gotoxy(20,10);
+	cout<<"€€€€€  €€€    €€€€€   €€€   €€€€€ €     € €€€€€"<<endl;
+	window(20,11,45,11);
+	gotoxy(20,11);
+	cout<<"€   €  €  €   €   €  €   €  €      €   €  €   €"<<endl;
+	window(20,12,45,12);
+	gotoxy(20,12);
+	cout<<"€   €  €  €   €   €  €   €  €       € €   €   €"<<endl;
+	window(20,13,45,13);
+	gotoxy(20,13);
+	cout<<"€€€€€  €€€    €€€€€  €   €  € €€€    €    €€€€€"<<endl;
+	window(20,14,45,14);
+	gotoxy(20,14);
+	cout<<"€   €  €  €   €   €  €   €  €   €    €    €   €"<<endl;
+	window(20,15,45,15);
+	gotoxy(20,15);
+	cout<<"€   €  €   €  €   €   €€€   €€€€€    €    €   €"<<endl;
+	getch();
+	init();
+	mainmenu();
+}
