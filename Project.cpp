@@ -161,3 +161,52 @@ void cursor(int x,int y, char* s)
 	puts(s);
 }
 }
+void setNum(int x,int y, char* s,int n,COLORS c = BLUE,int size=24)
+{
+	window(x,y,x+size,y);
+	textbackground(c);
+	textcolor(BLACK);
+	clrscr();
+	gotoxy(x+1,y);
+	puts(s);
+	window(x+10,y,x+30,y);
+	gotoxy(x+10,y);
+	cout<<n;
+}
+
+void setText(int x,int y, char* s,COLORS c = BLUE,int size=24)
+{
+	window(x,y,x+size,y);
+	textbackground(c);
+	textcolor(BLACK);
+	clrscr();
+	gotoxy(x+1,y);
+	puts(s);
+}
+
+long getNum(int x, int y, char* s,COLORS c = BLUE)
+{
+	long n;
+	window(x,y,30+x,y);
+	textbackground(c);
+	clrscr();
+	gotoxy(x+1,y);
+	puts(s);
+	window(x+22,y,x+50,y);
+	gotoxy(x+22,y);
+	cin>>n;
+	return n;
+
+}
+
+void getText(int x, int y, char* s,char str[],COLORS c = BLUE)
+{
+	window(x,y,30+x,y);
+	textbackground(c);
+	clrscr();
+	gotoxy(x+1,y);
+	puts(s);
+	window(x+22,y,x+50,y);
+	gotoxy(x+22,y);
+	gets(str);
+}
