@@ -129,4 +129,35 @@ void main()
 	getch();
 	init();
 	mainmenu();
+
+void box(int x1,int y1,int x2,int y2)
+{
+	int i;
+	char ch='€';
+	window(1,1,80,25);
+	textcolor(BLACK);
+	for(i=x1;i<=x2;i++)
+	{
+		gotoxy(i,y1);
+		cout<<ch;
+		gotoxy(i,y2);
+		cout<<ch;
+	}
+	for(i=y1;i<=y2;i++)
+	{
+		gotoxy(x1,i);
+		cout<<ch;
+		gotoxy(x2,i);
+		cout<<ch;
+	}
+}
+
+void cursor(int x,int y, char* s)
+{
+	window(x,y,20+x,y);
+	textbackground(MAGENTA);
+	clrscr();
+	gotoxy(x+1,y);
+	puts(s);
+}
 }
